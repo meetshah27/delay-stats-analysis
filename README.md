@@ -78,7 +78,7 @@ queries/          every Athena query as a .sql file
 notebooks/        data profile, one notebook per hypothesis, power analysis
 reports/          memo, results.csv, cost_log.csv, figures/
 infra/            Terraform: S3, Glue, Athena workgroup
-docs/             spec, pre-registered analysis plan, memo template
+docs/             pre-registered analysis plan, deviations log
 ```
 
 ## How to run

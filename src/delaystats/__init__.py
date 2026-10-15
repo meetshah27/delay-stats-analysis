@@ -1,1 +1,1 @@
-"""Statistical analysis of US airline arrival delays. See docs/SPEC.md."""
+"""Statistical analysis of US airline arrival delays (BTS on-time performance data)."""

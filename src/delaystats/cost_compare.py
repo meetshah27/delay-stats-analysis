@@ -1,4 +1,4 @@
-"""`make cost-compare` (SPEC section 4): run the four benchmark queries on the raw CSV table and
+"""`make cost-compare`: run the four benchmark queries on the raw CSV table and
 on the partitioned Parquet table, read DataScannedInBytes from Athena, price it, and write
 reports/cost_log.csv and reports/cost_comparison.md.
 

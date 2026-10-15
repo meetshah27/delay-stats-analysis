@@ -1,5 +1,5 @@
-# delay-stats-analysis. Targets mirror CLAUDE.md "Commands".
-# Stubs exit 1 with the phase that implements them, so nothing silently "succeeds".
+# delay-stats-analysis: ingestion, AWS (S3, Glue, Athena), notebooks and the memo.
+# Targets not built yet exit 1, so nothing silently "succeeds".
 # Analysis targets run on DELAYSTATS_BACKEND=local (DuckDB over data/curated) by default and
 # on Athena with DELAYSTATS_BACKEND=athena.
 
@@ -12,7 +12,7 @@ TF := terraform
 YEARS ?= 2023,2024,2025,2026
 
 define not_implemented
-	@echo "make $@: not implemented (BUILD_PLAN $(1))" >&2; exit 1
+	@echo "make $@: not implemented yet ($(1))" >&2; exit 1
 endef
 
 .PHONY: setup lint typecheck test ingest verify-counts tf-bootstrap tf-init tf-apply upload \
@@ -81,7 +81,7 @@ memo:
 	uv run python -m delaystats.check_memo_numbers
 
 memo-pdf:
-	$(call not_implemented,Phase 5)
+	$(call not_implemented,memo PDF export)
 
 teardown:
-	$(call not_implemented,Phase 7)
+	$(call not_implemented,teardown)

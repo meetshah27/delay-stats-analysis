@@ -1,4 +1,4 @@
-# S3, Glue and Athena for the delay analysis (SPEC section 3). Every resource is tagged
+# S3, Glue and Athena for the delay analysis. Every resource is tagged
 # project=delay-stats-analysis so `make teardown` can prove nothing is left.
 #
 #   s3://<bucket>/landing/csv/year=YYYY/month=MM/      raw BTS CSV (cost comparison only)
@@ -51,7 +51,7 @@ data "aws_caller_identity" "current" {}
 locals {
   bucket   = "delaystats-${data.aws_caller_identity.current.account_id}"
   database = "delaystats"
-  # SPEC section 2 columns with the typed schema of ingest.py; year/month are partition keys.
+  # The analysis columns with the typed schema of ingest.py; year/month are partition keys.
   parquet_columns = {
     dayofmonth                      = "int"
     dayofweek                       = "int"
@@ -165,7 +165,7 @@ resource "aws_glue_catalog_table" "ontime" {
   }
 }
 
-# Cost comparison only (SPEC section 4); dropped with its S3 prefix after `make cost-compare`.
+# Cost comparison only; dropped with its S3 prefix after `make cost-compare`.
 resource "aws_glue_catalog_table" "ontime_csv" {
   count         = var.keep_csv_table ? 1 : 0
   name          = "ontime_csv"

@@ -3,7 +3,7 @@
     python -m delaystats.ingest --years 2023,2024,2025,2026
     python -m delaystats.ingest --years 2023 --local-dir ~/Downloads/bts   # manually downloaded
 
-Each month: data/zips/YYYY_MM.zip (download cache) -> header check against SPEC section 2 ->
+Each month: data/zips/YYYY_MM.zip (download cache) -> header check ->
 data/curated/parquet/year=YYYY/month=MM/part-0000.parquet (snappy, typed, with
 primary_delay_cause). The CSV inside the zip is what lands in S3 landing/csv/ at upload time.
 Rows per month (source lines vs Parquet rows) go to data/ingest_log.csv.
@@ -42,7 +42,7 @@ URL = (
     "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_{year}_{month}.zip"
 )
 
-# SPEC section 2, in file order, with the typed schema of SPEC section 3.
+# The 27 columns the analysis uses, in file order, with their typed schema.
 COLUMNS: dict[str, pa.DataType] = {
     "Year": pa.int32(),
     "Month": pa.int32(),
