@@ -19,9 +19,8 @@ lint:
 typecheck:
 	uv run mypy src
 
-# pytest exit code 5 means "no tests collected", which is fine until Phase 3.
 test:
-	uv run pytest -q || [ $$? -eq 5 ]
+	uv run pytest -q
 
 ingest tf-apply crawl:
 	$(call not_implemented,Phase 1)

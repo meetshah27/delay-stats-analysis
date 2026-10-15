@@ -3,11 +3,18 @@ name = "delaystats"
 version = "0.1.0"
 description = "Pre-registered hypothesis tests on BTS airline delay data with S3, Glue and Athena."
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pingouin>=0.5.5",
+    "scipy>=1.13",
+    "statsmodels>=0.14",
+]
 
 [dependency-groups]
 dev = [
     "mypy>=1.11",
+    "pandas-stubs>=2.2",
     "pytest>=8.3",
     "ruff>=0.6",
 ]
@@ -26,6 +33,10 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
+
+[[tool.mypy.overrides]]
+module = ["scipy.*", "statsmodels.*", "pingouin.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
