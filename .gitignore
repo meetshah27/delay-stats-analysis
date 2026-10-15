@@ -1,0 +1,29 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Raw BTS downloads and local working data (the analysis reads from Athena)
+data/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
