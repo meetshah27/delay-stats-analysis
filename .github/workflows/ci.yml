@@ -18,3 +18,15 @@ jobs:
         run: make typecheck
       - name: Pytest
         run: make test
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-terraform@v4
+      - name: Format
+        run: terraform -chdir=infra fmt -check -recursive
+      - name: Validate bootstrap
+        run: terraform -chdir=infra/bootstrap init -backend=false -input=false && terraform -chdir=infra/bootstrap validate
+      - name: Validate
+        run: terraform -chdir=infra init -backend=false -input=false && terraform -chdir=infra validate
